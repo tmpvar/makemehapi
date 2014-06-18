@@ -10,6 +10,8 @@ Output should look like:
 Gur Chefhvg bs Uncv-arff
 ```
 
+based on the query string `?string=The Pursuit of Hapi-ness`
+
 -----------------------------------------------------------------
 ##HINTS
 
@@ -19,7 +21,7 @@ The Hapi handler `reply` function can accept a stream as an argument.
 
 ### File
 
-The `fs` module has a `createReadStream(pathToFile)` function that would be useful. 
+The `fs` module has a `createReadStream(pathToFile)` function that would be useful.
 
 ### Simple ROT13
 

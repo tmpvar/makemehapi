@@ -4,7 +4,7 @@ var Stream = require('stream');
 var Util = require('util');
 
 var options = {
-    
+
 };
 
 var server = Hapi.createServer('localhost', Number(process.argv[2] || 8081), options);
@@ -74,7 +74,7 @@ ROT13Stream.prototype._transform = function (data, encoding, callback) {
 
     encoding = (encoding == 'buffer' ? 'utf8' : encoding);
     data = data.toString(encoding);
-    
+
     var modified = "";
     var l = data.length;
     for(var i = 0;i<l;i++) {
@@ -85,7 +85,7 @@ ROT13Stream.prototype._transform = function (data, encoding, callback) {
         }
     }
     this.push(modified, encoding);
-    
+
     callback();
 };
 
@@ -95,10 +95,11 @@ server.route({
     path: "/",
     config: {
         handler: function (request, reply) {
-            var thisfile = Fs.createReadStream(__dirname + '/input.txt');
             var rot13 = new ROT13Stream();
-            
-            reply(thisfile.pipe(rot13));
+
+            reply(rot13);
+
+            rot13.end(request.query.string);
         }
     }
 });

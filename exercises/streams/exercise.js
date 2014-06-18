@@ -62,7 +62,7 @@ function query (mode) {
 
     function verify (port, stream) {
 
-        var url = 'http://localhost:' + port + '/';
+        var url = 'http://localhost:' + port + '/?string=how about you reverse this?';
 
         function error (err) {
             exercise.emit('fail', 'Error connecting to http://localhost:' + port + ': ' + err.code);
@@ -77,7 +77,6 @@ function query (mode) {
                 }
             })
             .pipe(bl(function (err, data) {
-
                 if (err)
                     return stream.emit('error', err);
 
